@@ -17,7 +17,7 @@ from flask import Flask, request, redirect, session
 from twilio.twiml.messaging_response import MessagingResponse
 client = Client('Client_API', 'API_Secret')  # nopep8
 
-message = client.messages.create(to='+16097053245', from_='+17325851951', body='please enter what you are looking for and the zipcode. Keyword, Zip_Code')  # nopep8
+message = client.messages.create(to='LOCATIONNUMBER', from_='TWILIONUMBER', body='please enter what you are looking for and the zipcode. Keyword, Zip_Code')  # nopep8
 print(message.sid)
 
 app = Flask(__name__)
@@ -31,7 +31,7 @@ def incoming_sms():
     body = request.form['Body']
     print(body)
     print('uhh this works?')
-    word = body.split(',')
+    word = body.split(', ')
     keyword = word[0]
     zip_code = word[1]
 
